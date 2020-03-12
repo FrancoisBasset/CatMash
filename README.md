@@ -1,2 +1,16 @@
+![](Mockup/assets/logo.png)
+
 # CatMash
-Application web permettant de connaître quel chat est le plus mignon en se basant sur des votes d'utilisateurs
+
+Cette application web permet de connaître quel chat est le plus mignon.
+
+## But de l'application
+
+Les utilisateurs doivent cliquer sur une image pour choisir le chat le plus mignon à leurs goûts.
+
+## Maquette
+
+### Page de vote
+
+![](Mockup/pages/premiere_page_de_vote.png)
+
