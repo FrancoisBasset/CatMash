@@ -8,12 +8,7 @@ app.listen(80, function() {
 app.use(express.static('./public'));
 
 app.get('/', function(req, res) {
-	const date = new Date();
-	const hour = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
-
-	res.render('./vote.ejs', {
-		hour: hour
-	});
+	res.render('./vote.ejs');
 });
 
 app.get('/classement', function(req, res) {
