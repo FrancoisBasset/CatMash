@@ -6,9 +6,14 @@ app.listen(80, function() {
 });
 
 app.get('/', function(req, res) {
-	res.send('Vote !');
+	const date = new Date();
+	const hour = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
+
+	res.render('./vote.ejs', {
+		hour: hour
+	});
 });
 
 app.get('/classement', function(req, res) {
-	res.send('Classement !');
+	res.render('./classement.ejs');
 });
