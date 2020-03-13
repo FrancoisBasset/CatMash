@@ -9,6 +9,11 @@
 	<body>
 		<%- include('header'); %>
 
+		<% for (const cat of cats) { %>
+			<h1><%= cat.id %></h1><br>
+			<img src="<%= cat.url %>" /><br>
+		<% } %>
+
 		<div id="classement_div">
 			<a href="/classement">
 				<button id="classement_button">Classement</button>

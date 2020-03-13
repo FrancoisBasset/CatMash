@@ -9,19 +9,15 @@ app.listen(80, function() {
 app.use(express.static('./public'));
 
 app.get('/', function(req, res) {
-	res.render('./vote.ejs');
-});
-
-app.get('/classement', function(req, res) {
-	res.render('./classement.ejs');
-});
-
-app.get('/showcatsfortest', function(req, res) {
 	fetch('https://latelier.co/data/cats.json').then(function(fetchRes) {
 		fetchRes.json().then(function(json) {
-			res.render('./showcatsfortest.ejs', {
+			res.render('./vote.ejs', {
 				cats: json.images
 			});
 		});
 	});
+});
+
+app.get('/classement', function(req, res) {
+	res.render('./classement.ejs');
 });
