@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 const express = require('express');
 const app = express();
 
@@ -11,9 +12,12 @@ app.listen(80, function() {
 app.use(express.static('./public'));
 
 app.get('/', function(req, res) {
-	res.render('./vote.ejs', {
-		cats: CatController.cats
-	});
+	CatController.getCatsFromRemoteJsonFile()
+		.then(function(cats) {
+			res.render('./vote.ejs', {
+				cats: cats
+			});
+		});
 });
 
 app.get('/classement', function(req, res) {
