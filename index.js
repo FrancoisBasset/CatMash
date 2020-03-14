@@ -12,8 +12,12 @@ app.use(express.static('./public'));
 
 app.get('/', function(req, res) {
 	CatController.getCats().then(function(cats) {
+		var leftCat = cats[0];
+		var rightCat = cats[1];
+
 		res.render('./vote.ejs', {
-			cats: cats
+			leftCat: leftCat,
+			rightCat: rightCat
 		});
 	});
 });

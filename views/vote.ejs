@@ -9,10 +9,11 @@
 	<body>
 		<%- include('header'); %>
 
-		<% for (const cat of cats) { %>
-			<h1><%= cat.id %></h1><br>
-			<img src="<%= cat.url %>" /><br>
-		<% } %>
+		<div id="images_div">
+			<img class="image" src="<%= leftCat.url %>" width="300px" height="300px" />
+			<img class="image" src="<%= rightCat.url %>" width="300px" height="300px" />
+		</div>
+		
 
 		<div id="classement_div">
 			<a href="/classement">

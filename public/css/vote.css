@@ -22,3 +22,13 @@
 #classement_button:hover {
 	background-color: #FF9900;
 }
+
+#images_div {
+	margin-top: 50px;
+	text-align: center;
+}
+
+.image {
+	margin-left: 140px;
+	margin-right: 140px;
+}
