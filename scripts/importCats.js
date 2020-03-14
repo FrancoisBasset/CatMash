@@ -11,7 +11,7 @@ function getCatsFromRemoteJsonFile() {
 		});
 }
 
-getCatsFromRemoteJsonFile().then(cats => {
+getCatsFromRemoteJsonFile().then(function(cats) {
 	const catsCollection = firebaseApp.firestore().collection('cats');
 
 	for (const cat of cats) {
