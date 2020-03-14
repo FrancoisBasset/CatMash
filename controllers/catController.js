@@ -1,15 +1,13 @@
-const fetch = require('node-fetch');
+const firebaseApp = require('../firestore');
+const catsCollection = firebaseApp.firestore().collection('cats');
 
-function getCatsFromRemoteJsonFile() {
-	return fetch('https://latelier.co/data/cats.json')
-		.then(function(fetchRes) {
-			return fetchRes.json();
-		})
-		.then(function(json) {
-			return json.images;
+function getCats() {
+	return catsCollection.get()
+		.then(function(cats) {
+			return cats.docs.map(c => c.data());
 		});
 }
 
 module.exports = {
-	getCatsFromRemoteJsonFile
+	getCats
 };
