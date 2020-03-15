@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
-
-const firebaseController = require('../controllers').FirebaseController;
-const firebaseApp = firebaseController.firebaseApp;
+const controllers = require('../controllers');
+const sqliteController = controllers.SqliteController;
+const db = sqliteController.db;
 
 function getCatsFromRemoteJsonFile() {
 	return fetch('https://latelier.co/data/cats.json')
@@ -14,13 +14,7 @@ function getCatsFromRemoteJsonFile() {
 }
 
 getCatsFromRemoteJsonFile().then(function(cats) {
-	const catsCollection = firebaseApp.firestore().collection('cats');
-
 	for (const cat of cats) {
-		catsCollection.add({
-			url: cat.url,
-			votesCount: 0,
-			id_user: null
-		});
+		db.run(`INSERT INTO CATS(URL) VALUES('${cat.url}')`);
 	}
 });

@@ -1,23 +1,38 @@
-const firebaseController = require('./firebaseController');
-const firebaseApp = firebaseController.firebaseApp;
-const catsCollection = firebaseApp.firestore().collection('cats');
+const sqliteController = require('./sqliteController');
 
 function getCats() {
-	return catsCollection.get()
-		.then(function(catsRes) {
-			var cats = [];
+	return sqliteController.select('select * from cats');
+}
 
-			for (var catRes of catsRes.docs) {
-				var cat = catRes.data();
-				cat.id = catRes.id;
+function getRandomCat(firstCat) {
+	return getCats()
+		.then(function(cats) {
+			const count = cats.length;
+			const index = getRandomTo(count - 1);
+			
+			const cat = cats[index];
 
-				cats.push(cat);
+			if (firstCat && firstCat.id == cat.id) {
+				const newIndex = index + 1;
+
+				if (newIndex == cats.length) {
+					return cats[index - 1];
+				}
+				
+				return cats[newIndex];
 			}
-
-			return cats;
+			
+			return cat;
 		});
 }
 
+function getRandomTo(to) {
+	to--;
+	return Math.floor(Math.random() * to);
+}
+
 module.exports = {
-	getCats
+	getCats,
+	getRandomCat,
+	getRandomTo
 };
