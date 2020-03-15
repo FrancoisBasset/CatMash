@@ -4,7 +4,7 @@ const app = express();
 const controllers = require('./controllers');
 const CatController = controllers.CatController;
 
-app.listen(80, function() {
+app.listen(process.env.PORT || 80, function() {
 	console.log('Listen on 80');
 });
 
