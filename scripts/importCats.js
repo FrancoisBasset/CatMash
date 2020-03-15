@@ -1,5 +1,7 @@
-const firebaseApp = require('../firestore');
 const fetch = require('node-fetch');
+
+const firebaseController = require('../controllers').FirebaseController;
+const firebaseApp = firebaseController.firebaseApp;
 
 function getCatsFromRemoteJsonFile() {
 	return fetch('https://latelier.co/data/cats.json')

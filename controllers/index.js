@@ -1,3 +1,4 @@
 module.exports = {
-	CatController: require('./catController')
+	CatController: require('./catController'),
+	FirebaseController: require('./firebaseController')
 };

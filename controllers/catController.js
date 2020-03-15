@@ -1,4 +1,5 @@
-const firebaseApp = require('../firestore');
+const firebaseController = require('./firebaseController');
+const firebaseApp = firebaseController.firebaseApp;
 const catsCollection = firebaseApp.firestore().collection('cats');
 
 function getCats() {
