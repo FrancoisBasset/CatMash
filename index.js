@@ -11,15 +11,16 @@ app.listen(process.env.PORT || 80, function() {
 app.use(express.static('./public'));
 
 app.get('/', function(req, res) {
-	CatController.getCats().then(function(cats) {
-		var leftCat = cats[0];
-		var rightCat = cats[1];
-
-		res.render('./vote.ejs', {
-			leftCat: leftCat,
-			rightCat: rightCat
+	CatController.getRandomCat()
+		.then(function(leftCat) {
+			CatController.getRandomCat(leftCat)
+				.then(function(rightCat) {
+					res.render('./vote.ejs', {
+						leftCat: leftCat,
+						rightCat: rightCat
+					});
+				});
 		});
-	});
 });
 
 app.get('/classement', function(req, res) {
