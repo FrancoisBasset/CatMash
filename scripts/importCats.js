@@ -14,11 +14,7 @@ function getCatsFromRemoteJsonFile() {
 }
 
 getCatsFromRemoteJsonFile().then(function(cats) {
-	console.log(cats);
-	
 	for (const cat of cats) {
 		db.run(`INSERT INTO CATS(URL) VALUES('${cat.url}')`);
 	}
-
-	db.close();
 });

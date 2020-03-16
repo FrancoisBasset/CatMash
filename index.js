@@ -21,12 +21,8 @@ app.get('/', function(req, res) {
 
 	CatController.getRandomCat()
 		.then(function(leftCat) {
-			console.log(leftCat);
-			
 			CatController.getRandomCat(leftCat)
 				.then(function(rightCat) {
-					console.log(rightCat);
-					
 					res.render('./vote.ejs', {
 						leftCat: leftCat,
 						rightCat: rightCat
