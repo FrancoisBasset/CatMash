@@ -18,7 +18,20 @@ function select(sql) {
 	});
 }
 
+function update(sql) {
+	return new Promise(function(resolve, reject) {
+		db.run(sql, function(err) {
+			if (err) {
+				reject(err);
+			} else {
+				resolve();
+			}
+		});
+	});
+}
+
 module.exports = {
 	db,
-	select
+	select,
+	update
 };

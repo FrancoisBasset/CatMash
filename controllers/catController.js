@@ -4,6 +4,10 @@ function getCats() {
 	return sqliteController.select('select * from cats');
 }
 
+function getCat(catId) {
+	return sqliteController.select(`select * from cats where id = ${catId}`);
+}
+
 function getRandomCat(firstCat) {
 	return getCats()
 		.then(function(cats) {
@@ -31,8 +35,25 @@ function getRandomTo(to) {
 	return Math.floor(Math.random() * to);
 }
 
+function incrementVote(catId) {
+	return getCat(catId)
+		.then(function(cat) {
+			cat = cat[0];
+
+			const newVotesCount = cat.votesCount + 1;
+
+			sqliteController.update(`update cats set votesCount = ${newVotesCount} where id = ${catId}`)
+				.then(function(err) {
+					if (err) {
+						console.log(err);
+					}
+				});
+		});
+}
+
 module.exports = {
 	getCats,
 	getRandomCat,
-	getRandomTo
+	getRandomTo,
+	incrementVote
 };

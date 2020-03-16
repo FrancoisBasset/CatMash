@@ -11,6 +11,14 @@ app.listen(process.env.PORT || 80, function() {
 app.use(express.static('./public'));
 
 app.get('/', function(req, res) {
+	if (req.query.vote) {
+		console.log(req.query.vote);
+		CatController.incrementVote(req.query.vote);
+
+		res.redirect('/');
+		return;
+	}
+
 	CatController.getRandomCat()
 		.then(function(leftCat) {
 			CatController.getRandomCat(leftCat)
