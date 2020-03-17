@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	background: linear-gradient(to right, white 0%, white 50%, #D6FFFE 0%, #D6FFFE 100%);
+	background: linear-gradient(to right, white 0%, white 50%, rgb(151, 255, 253) 0%, rgb(151, 255, 253) 100%);
 	-ms-overflow-style: none;
 	font-family: calibri;
 }
