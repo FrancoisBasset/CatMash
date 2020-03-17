@@ -29,7 +29,6 @@
 	text-align: center;
 }
 
-.image {
-	left: 10%;
-	right: 10%;
+.image:active {
+	border: 10px green solid; 
 }
