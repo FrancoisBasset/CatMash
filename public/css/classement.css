@@ -1,0 +1,30 @@
+.podiumBlock {
+	height: 100px;
+}
+
+.otherBlock {
+	height: 100px;
+	background-color: grey;
+	border-top: 1px black solid;
+}
+
+#gold {	
+	background-color: gold;
+}
+
+#silver {
+	background-color: silver;
+}
+
+#bronze {
+	background-color: burlywood;
+}
+
+.image {
+	width: 100px;
+	height: 100px;
+}
+
+.rank {
+	font-size: 30px;
+}

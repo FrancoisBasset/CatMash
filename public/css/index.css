@@ -1,4 +1,14 @@
 body {
 	margin: 0;
 	background: linear-gradient(to right, white 0%, white 50%, #D6FFFE 0%, #D6FFFE 100%);
+	-ms-overflow-style: none;
+	font-family: calibri;
+}
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+.no_select {
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }

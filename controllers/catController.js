@@ -1,7 +1,7 @@
 const sqliteController = require('./sqliteController');
 
 function getCats() {
-	return sqliteController.select('select * from cats');
+	return sqliteController.select('select * from cats order by votesCount desc');
 }
 
 function getCat(catId) {

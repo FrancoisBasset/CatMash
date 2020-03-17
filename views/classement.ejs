@@ -2,15 +2,52 @@
 <html>
 	<head>
 		<title>Classement CatMash</title>
+		<link rel="stylesheet" href="./css/index.css" />
+		<link rel="stylesheet" href="./css/classement.css" />
 	</head>
 
 	<body>
-		<%- include('header'); %>
-		
-		<h1>Page de classement !</h1>
+		<%- include('header', { text: "Classement CatMash" }); %>
 
-		<a href="/">
-			<button>Page de vote</button>
-		</a>
+		<table>
+			<tr>
+				<td><label class="rank">1</label></td>
+				<td><img class="image" src="<%= cats[0].url %>" /></td>
+				<td><label class="rank"><%= cats[0].votesCount %> votes</label></td>
+				<td style="width: 100%;">
+					<div id="gold" class="podiumBlock" style="width: <%= Math.floor((cats[0].votesCount * 100) / max) %>%;"></div>
+				</td>
+			</tr>
+
+			<tr>
+				<td><label class="rank">2</label></td>
+				<td><img class="image" src="<%= cats[1].url %>" /></td>
+				<td><label class="rank"><%= cats[1].votesCount %> votes</label></td>
+				<td style="width: 100%;">
+					<div id="silver" class="podiumBlock" style="width: <%= Math.floor((cats[1].votesCount * 100) / max) %>%;" ></div>
+				</td>
+			</tr>
+
+			<tr>
+				<td><label class="rank">3</label></td>
+				<td><img class="image" src="<%= cats[2].url %>" /></td>
+				<td><label class="rank"><%= cats[2].votesCount %> votes</label></td>
+				<td style="width: 100%;">
+					<div id="bronze" class="podiumBlock" style="width: <%= Math.floor((cats[2].votesCount * 100) / max) %>%;" ></div>
+				</td>
+			</tr>
+
+		<% for (var i = 3; i < cats.length; i++) { %>
+			<tr>
+				<td><label class="rank"><%= i + 1 %></label></td>
+				<td><img class="image" src="<%= cats[i].url %>" /></td>
+				<td><label class="rank"><%= cats[i].votesCount %> votes</label></td>
+				<td style="width: 100%;">
+					<div class="otherBlock" style="width: <%= Math.floor((cats[i].votesCount * 100) / max) %>%;" ></div>
+				</td>
+			</tr>
+		<% } %>
+
+		</table>
 	</body>
 </html>

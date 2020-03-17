@@ -12,7 +12,6 @@ app.use(express.static('./public'));
 
 app.get('/', function(req, res) {
 	if (req.query.vote) {
-		console.log(req.query.vote);
 		CatController.incrementVote(req.query.vote);
 
 		res.redirect('/');
@@ -32,5 +31,11 @@ app.get('/', function(req, res) {
 });
 
 app.get('/classement', function(req, res) {
-	res.render('./classement.ejs');
+	CatController.getCats()
+		.then(function(cats) {
+			res.render('./classement.ejs', {
+				cats: cats,
+				max: cats[0].votesCount
+			});
+		});
 });
