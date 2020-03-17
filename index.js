@@ -33,9 +33,14 @@ app.get('/', function(req, res) {
 app.get('/classement', function(req, res) {
 	CatController.getCats()
 		.then(function(cats) {
+			var max = cats[0].votesCount;
+			if (max == 0) {
+				max = 1;
+			}
+
 			res.render('./classement.ejs', {
 				cats: cats,
-				max: cats[0].votesCount
+				max: max
 			});
 		});
 });
