@@ -10,10 +10,8 @@
 	<body>
 		<%- include('header', { text: "Classement CatMash" }); %>
 
-		<label>Aller au classement </label>
-		<input type="number" id="search" min="1" max="<%= cats.length %>" />
-		<label> / <%= cats.length %></label>
-		<button id="goTo">Y aller</button>
+		<label style="font-size: 50px;">Rechercher dans le classement :</label>
+		<input id="searchInput" type="number" min="1" max="<%= cats.length %>" />
 
 		<table>
 			<tr id="1">
@@ -58,13 +56,12 @@
 	</body>
 
 	<script>
-		const search = document.getElementById('search');
-		const goTo = document.getElementById('goTo');
+		const searchInput = document.getElementById('searchInput');
 		const cats = <%- JSON.stringify(cats); %>;
 
-		goTo.addEventListener('click', function(e) {
-			if (parseInt(search.value) == search.value && search.value > 0 && search.value <= cats.length) {
-				location.href = "#" + search.value;
+		searchInput.addEventListener('change', function(e) {
+			if (parseInt(searchInput.value) == searchInput.value && searchInput.value > 0 && searchInput.value <= cats.length) {
+				location.href = "#" + searchInput.value;
 			}
 		});
 	</script>

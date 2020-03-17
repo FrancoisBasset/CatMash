@@ -28,3 +28,11 @@
 .rank {
 	font-size: 30px;
 }
+
+#searchInput {
+	width: 98%;
+	height: 80px;
+
+	text-align: center;
+	font-size: 80px;
+}
