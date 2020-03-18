@@ -44,3 +44,5 @@ app.get('/classement', function(req, res) {
 			});
 		});
 });
+
+app.use('/api', require('./api'));

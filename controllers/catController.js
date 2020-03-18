@@ -38,14 +38,28 @@ function getRandomTo(to) {
 function incrementVote(catId) {
 	return getCat(catId)
 		.then(function(cat) {
+			if (cat.length == 0) {
+				return {
+					success: false,
+					err: 'No cat with this id'
+				};
+			}			
+
 			cat = cat[0];
 
 			const newVotesCount = cat.votesCount + 1;
 
-			sqliteController.update(`update cats set votesCount = ${newVotesCount} where id = ${catId}`)
+			return sqliteController.update(`update cats set votesCount = ${newVotesCount} where id = ${catId}`)
 				.then(function(err) {
 					if (err) {
-						console.log(err);
+						return {
+							success: false,
+							err: err
+						};
+					} else {
+						return {
+							success: true
+						};
 					}
 				});
 		});
@@ -55,5 +69,6 @@ module.exports = {
 	getCats,
 	getRandomCat,
 	getRandomTo,
-	incrementVote
+	incrementVote,
+	getCat
 };
