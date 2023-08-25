@@ -4,8 +4,8 @@ const app = express();
 const controllers = require('./controllers');
 const CatController = controllers.CatController;
 
-app.listen(process.env.PORT || 80, function() {
-	console.log('Listen on 80');
+app.listen(process.env.PORT || 3000, function() {
+	console.log('Listen on 3000');
 });
 
 app.use(express.static('./public'));
