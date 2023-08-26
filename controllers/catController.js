@@ -1,33 +1,32 @@
 const sqliteController = require('./sqliteController');
 
 function getCats() {
-	return sqliteController.select('select * from cats order by votesCount desc');
+	return sqliteController.select('SELECT * FROM cats ORDER BY votesCount DESC');
 }
 
 function getCat(catId) {
-	return sqliteController.select(`select * from cats where id = ${catId}`);
+	return sqliteController.select(`SELECT * FROM cats WHERE id = ${catId}`);
 }
 
 function getRandomCat(firstCat) {
-	return getCats()
-		.then(function(cats) {
-			const count = cats.length;
-			const index = getRandomTo(count - 1);
-			
-			const cat = cats[index];
+	return getCats().then(function(cats) {
+		const count = cats.length;
+		const index = getRandomTo(count - 1);
+		
+		const cat = cats[index];
 
-			if (firstCat && firstCat.id == cat.id) {
-				const newIndex = index + 1;
+		if (firstCat && firstCat.id == cat.id) {
+			const newIndex = index + 1;
 
-				if (newIndex == cats.length) {
-					return cats[index - 1];
-				}
-				
-				return cats[newIndex];
+			if (newIndex == cats.length) {
+				return cats[index - 1];
 			}
 			
-			return cat;
-		});
+			return cats[newIndex];
+		}
+		
+		return cat;
+	});
 }
 
 function getRandomTo(to) {

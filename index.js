@@ -18,31 +18,28 @@ app.get('/', function(req, res) {
 		return;
 	}
 
-	CatController.getRandomCat()
-		.then(function(leftCat) {
-			CatController.getRandomCat(leftCat)
-				.then(function(rightCat) {
-					res.render('./vote.ejs', {
-						leftCat: leftCat,
-						rightCat: rightCat
-					});
-				});
+	CatController.getRandomCat().then(function(leftCat) {
+		CatController.getRandomCat(leftCat).then(function(rightCat) {
+			res.render('./vote.ejs', {
+				leftCat: leftCat,
+				rightCat: rightCat
+			});
 		});
+	});
 });
 
 app.get('/classement', function(req, res) {
-	CatController.getCats()
-		.then(function(cats) {
-			var max = cats[0].votesCount;
-			if (max == 0) {
-				max = 1;
-			}
+	CatController.getCats().then(function(cats) {
+		let max = cats[0].votesCount;
+		if (max == 0) {
+			max = 1;
+		}
 
-			res.render('./classement.ejs', {
-				cats: cats,
-				max: max
-			});
+		res.render('./classement.ejs', {
+			cats: cats,
+			max: max
 		});
+	});
 });
 
 app.use('/api', require('./api'));

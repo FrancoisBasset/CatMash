@@ -1,10 +1,4 @@
-const sqlite3 = require('sqlite3');
-
-const db = new sqlite3.Database('db/catmash.db', function(err) {
-	if (err) {
-		console.log(err);
-	}
-});
+const db = require('../db/db');
 
 function select(sql) {
 	return new Promise(function(resolve, reject) {
@@ -31,7 +25,6 @@ function update(sql) {
 }
 
 module.exports = {
-	db,
 	select,
 	update
 };

@@ -37,7 +37,7 @@ describe('CatController', function() {
 		});
 
 		it('random should gte 0 lte cats length', function() {
-			for (var i = 0; i < 1000; i++) {
+			for (let i = 0; i < 1000; i++) {
 				const random = CatController.getRandomTo(this.cats.length - 1);
 				
 				random.should.gte(0).lte(this.cats.length - 1);
