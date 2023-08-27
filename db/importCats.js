@@ -2,20 +2,14 @@ const db = require('./db');
 
 function getCatsFromRemoteJsonFile() {
 	return fetch('https://latelier.co/data/cats.json').then(function(res) {
-		return res.json();
-	}).then(function(json) {
-		return json.images;
+		return res.json().then(function(json) {
+			return json.images;
+		});
 	});
 }
 
 getCatsFromRemoteJsonFile().then(function(cats) {
-	for (const cat of cats) {
-		let url = cat.url;
-		
-		if (url.startsWith('http://')) {
-			url = `https://${url.split('http://')[1]}`;
-		}
+	const urls = cats.map(i => '("' + i.url + '")').join(',');
 
-		db.run(`INSERT INTO CATS(URL) VALUES('${url}')`);
-	}
+	db.run('INSERT INTO CATS(URL) VALUES ' + urls);
 });

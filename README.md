@@ -33,12 +33,8 @@ Son adresse est https://catmash-paris.herokuapp.com/api/
 ### GET /cats
 	Obtenir la liste des chats
 
-### GET /vote/:catId
+### GET /cats/vote/:catId
 	Voter pour un chat avec son id donné en paramètre dans l'URL
 
-### GET /getRandomCat
-	Obtenir un chat au hazard
-
-### GET /getRandomCat/:catId
-	Obtenir un chat au hazard mais différent du chat ayant l'id donné en paramètre
-	Cela est utile pour obtenir la deuxième image
+### GET /cats/randoms
+	Obtenir 2 chats au hazard
