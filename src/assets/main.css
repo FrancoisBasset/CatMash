@@ -1,16 +1,12 @@
 body {
 	margin: 0;
-	background: linear-gradient(to right, white 0%, white 50%, rgb(151, 255, 253) 0%, rgb(151, 255, 253) 100%);
+	background: linear-gradient(to right, white 0%, white 50%, rgb(151 255 253) 0%, rgb(151 255 253) 100%);
 	-ms-overflow-style: none;
-	font-family: calibri;
+	font-family: 'Courier New', Courier, monospace;
 }
 
 body::-webkit-scrollbar {
 	display: none;
-}
-
-.no-select {
-	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
 .centered {

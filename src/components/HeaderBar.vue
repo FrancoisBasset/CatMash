@@ -1,18 +1,17 @@
 <template>
 	<div class="centered">
-		<router-link class="no-select" to="/">
-			<img src="../assets/logo.png" width="400" /><br>
+		<router-link to="/">
+			<img src="../assets/logo.png" width="400" alt="Logo" /><br>
 		</router-link>
 
-		<router-link id="logo-label" class="no-select" to="/">{{ text }}</router-link>
+		<router-link id="logo-label" to="/">{{ text }}</router-link>
 	</div>
 </template>
 
 <style>
 #logo-label {
 	font-size: 60px;
-	font-family: calibri;
-	font-weight: 600;
+	font-family: 'Courier New', Courier, monospace;
 
 	color: #FF9900;
 	cursor: pointer;

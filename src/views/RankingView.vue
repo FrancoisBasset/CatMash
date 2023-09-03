@@ -8,7 +8,7 @@
 		<table v-if="cats">
 			<tr id="1">
 				<td><label class="rank">1</label></td>
-				<td><img class="image" :src="cats[0].image" /></td>
+				<td><img class="image" :src="cats[0].image" alt="Gold cat" /></td>
 				<td><label class="rank">{{ cats[0].votesCount }} votes</label></td>
 				<td style="width: 100%;">
 					<div id="gold" class="podiumBlock" :style="{width: Math.floor((cats[0].votesCount * 100) / cats.length)}"></div>
@@ -17,7 +17,7 @@
 
 			<tr id="2">
 				<td><label class="rank">2</label></td>
-				<td><img class="image" :src="cats[1].image" /></td>
+				<td><img class="image" :src="cats[1].image" alt="Silver cat" /></td>
 				<td><label class="rank">{{ cats[1].votesCount }} votes</label></td>
 				<td style="width: 100%;">
 					<div id="silver" class="podiumBlock" :style="{width: Math.floor((cats[1].votesCount * 100) / cats.length)}"></div>
@@ -26,7 +26,7 @@
 
 			<tr id="3">
 				<td><label class="rank">3</label></td>
-				<td><img class="image" :src="cats[2].image" /></td>
+				<td><img class="image" :src="cats[2].image" alt="Bronze cat" /></td>
 				<td><label class="rank">{{ cats[2].votesCount }} votes</label></td>
 				<td style="width: 100%;">
 					<div id="bronze" class="podiumBlock" :style="{width: Math.floor((cats[2].votesCount * 100) / cats.length)}"></div>
@@ -35,7 +35,7 @@
 
 			<tr v-for="(cat, i) of cats.slice(3)" :key="i">
 				<td><label class="rank">{{ i + 4 }}</label></td>
-				<td><img class="image" :src="cat.image" /></td>
+				<td><img class="image" :src="cat.image" alt="Cat not in the podium" /></td>
 				<td><label class="rank">{{ cat.votesCount }} votes</label></td>
 				<td style="width: 100%;">
 					<div class="otherBlock" :style="{width: Math.floor((cat.votesCount * 100) / cats.length)}"></div>

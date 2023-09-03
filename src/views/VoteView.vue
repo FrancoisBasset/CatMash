@@ -3,8 +3,8 @@
 		<HeaderBar text="CatMash" />
 
 		<div id="images-div" v-if="leftCat && rightCat">
-			<img class="no_select image" @click="choose(leftCat.id)" :src="leftCat.image" width="400" height="400" />
-			<img class="no_select image" @click="choose(rightCat.id)" :src="rightCat.image" width="400" height="400" />
+			<img class="no_select image" @click="choose(leftCat.id)" :src="leftCat.image" width="400" height="400" alt="First choice of cat" />
+			<img class="no_select image" @click="choose(rightCat.id)" :src="rightCat.image" width="400" height="400" alt="Second choice of cat" />
 		</div>
 
 		<div id="classement-div">

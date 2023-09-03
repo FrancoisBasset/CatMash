@@ -25,7 +25,7 @@ const getRandomTo = to => Math.floor(Math.random() * to);
 
 function incrementVote(catId) {
 	return getById(catId).then(function(cat) {
-		if (cat.length == 0) {
+		if (cat.length === 0) {
 			return {
 				success: false,
 				err: 'No cat with this id'
