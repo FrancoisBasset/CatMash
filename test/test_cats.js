@@ -31,9 +31,9 @@ describe('Cats', function() {
 			this.randomCats[1].should.be.an('object');
 		});
 
-		it('should ownProperty id + url + votesCount', function() {
+		it('should ownProperty id + image + votesCount', function() {
 			this.randomCats[0].should.ownProperty('id');
-			this.randomCats[0].should.ownProperty('url');
+			this.randomCats[0].should.ownProperty('image');
 			this.randomCats[0].should.ownProperty('votesCount');
 		});
 

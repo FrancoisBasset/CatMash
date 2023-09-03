@@ -1,3 +1,4 @@
 node_modules
 package-lock.json
 db/catmash.db
+dist

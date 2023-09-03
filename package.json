@@ -5,8 +5,11 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "nodemon index.js",
+		"vite": "vite",
+		"build": "vite build",
+    	"preview": "vite preview",
 		"start": "node index.js",
-		"lint": "eslint . --fix",
+		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix",
 		"test": "mocha",
 		"clean": "rm -rf node_modules package-lock.json db/catmash.db"
 	},
@@ -30,12 +33,18 @@
 	"dependencies": {
 		"ejs": "^3.1.9",
 		"express": "^4.18.2",
-		"sqlite3": "^5.1.6"
+		"pinia": "^2.1.6",
+		"sqlite3": "^5.1.6",
+	    "vue": "^3.3.4",
+    	"vue-router": "^4.2.4"
 	},
 	"devDependencies": {
 		"chai": "^4.3.8",
 		"eslint": "^8.47.0",
+		"eslint-plugin-vue": "^9.16.1",
 		"mocha": "^10.2.0",
-		"nodemon": "^3.0.1"
+		"nodemon": "^3.0.1",
+		"@vitejs/plugin-vue": "^4.3.1",
+		"vite": "^4.4.9"
 	}
 }

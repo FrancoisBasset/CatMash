@@ -1,42 +1,23 @@
 const express = require('express');
 const app = express();
 
-const Cats = require('./managers/cats');
+const {exec} = require('child_process');
+const fs = require('fs');
+
+const distExists = fs.existsSync('./dist');
 
 app.listen(process.env.PORT || 3000, function() {
-	console.log('Listen on 3000');
-});
-
-app.use(express.static('./public'));
-
-app.get('/', function(req, res) {
-	if (req.query.vote) {
-		Cats.incrementVote(req.query.vote);
-
-		res.redirect('/');
-		return;
-	}
-
-	Cats.getRandoms().then(function(cats) {
-		res.render('./vote.ejs', {
-			leftCat: cats[0],
-			rightCat: cats[1]
-		});
-	});
-});
-
-app.get('/classement', function(req, res) {
-	Cats.getAll().then(function(cats) {
-		let max = cats[0].votesCount;
-		if (max == 0) {
-			max = 1;
-		}
-
-		res.render('./classement.ejs', {
-			cats: cats,
-			max: max
-		});
-	});
+	console.log('Starting back');
+	console.log(`Go to http://localhost:${distExists ? process.env.PORT || 3000 : 5173}`);
 });
 
 app.use('/api', require('./routes'));
+
+if (fs.existsSync('./dist')) {
+	app.use(express.static('./dist', {
+		index: 'index.html'
+	}));
+} else {
+	exec('npm run vite');
+	console.log('Starting front');
+}

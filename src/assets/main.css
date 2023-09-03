@@ -9,6 +9,14 @@ body::-webkit-scrollbar {
 	display: none;
 }
 
-.no_select {
+.no-select {
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+.centered {
+	text-align: center;
+}
+
+.image:active {
+	border: 10px green solid; 
 }
